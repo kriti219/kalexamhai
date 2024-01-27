@@ -6,6 +6,7 @@ import { auth } from "./firebase/firebase-config";
 import { useEffect, useState } from "react";
 import { login } from "./redux/features/Login/loginSlice";
 import { useDispatch } from "react-redux";
+import Cards from "./components/Cards";
 export default function Home() {
   const { isLogin } = useSelector((state) => state.login);
   const [isHidden, setIsHidden] = useState(false);
@@ -25,8 +26,8 @@ export default function Home() {
         src="images/Banner/Banner-1.png"
         alt="Banner-1.png"
       ></img>
-      <div className="flex flex-row px-9 py-0 gap-8">
-        <div className="flex flex-col px-4 py-3 gap-2 border-black border-2 rounded-lg font-bold ">
+      <div className="flex flex-row px-9 py-0 gap-8 ">
+        <div className="flex flex-col px-4 py-3 gap-2 border-black border-2 rounded-lg font-bold max-h-14">
           <div className="flex flex-row w-28 h-7 px-3 pb-3 pt-0 gap-3">
             <img
               src="images/filter/filter.png"
@@ -51,17 +52,31 @@ export default function Home() {
             </div>
           )}
         </div>
-        <div className="flex flex-row w-[100%] max-h-14">
-          <input
-            type="text"
-            placeholder="Search your subject"
-            className="w-[100%] rounded-l-lg px-4 py-2 focus:outline-none border-black border-2 border-r-0"
-          ></input>
-          <button className="bg-[#4470E2] border-2 border-[#4470E2] w-12 rounded-r-lg">
-            <MagnifyingGlassIcon className="w-6 h-6 text-white m-auto" />
-          </button>
+
+        <div className="w-[100%]">
+          <div className="flex flex-row">
+            <input
+              type="text"
+              placeholder="Search your subject"
+              className="w-[100%] rounded-l-lg px-4 py-2 focus:outline-none border-black border-2 border-r-0"
+            ></input>
+            <button className="bg-[#4470E2] border-2 border-[#4470E2] w-12 rounded-r-lg">
+              <MagnifyingGlassIcon className="w-6 h-6 text-white m-auto" />
+            </button>
+          </div>
+
+          <div className="grid md:grid-cols-3 sm:grid-rows-1 mt-5 gap-20">
+              <Cards title="FACULTY OF ENGINEERING" img="images/cards/engineering.png" link="/"/>
+              <Cards title="FACULTY OF SCIENCES" img="images/cards/sciences.png" link="/"/>
+              <Cards title="FACULTY OF MANAGEMENT" img="images/cards/management.png" link="/"/>
+              <Cards title="FACULTY OF HUMANITIES" img="images/cards/humanities.png" link="/"/>
+          </div>
         </div>
+
       </div>
+
+
+
     </div>
   );
 }
